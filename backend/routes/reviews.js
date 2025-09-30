@@ -46,7 +46,6 @@ router.delete('/:id', (req, res) => {
     return res.status(400).json({ error: 'Review ID is required' });
   }
 
-  // First check if review exists
   db.get("SELECT * FROM reviews WHERE id = ?", [reviewId], (err, review) => {
     if (err) {
       console.error('Database error:', err.message);
