@@ -1,0 +1,126 @@
+.home-page {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-hero {
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+.home-hero-content {
+  background-color: var(--card-background);
+  padding: 3rem;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border-color);
+}
+
+.home-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-weight: 700;
+}
+
+.home-description {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.home-features {
+  margin: 3rem 0;
+}
+
+.home-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.home-feature-card {
+  padding: 2rem 1.5rem;
+  background-color: var(--background-color);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease;
+}
+
+.home-feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.home-feature-title {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+}
+
+.home-feature-text {
+  color: var(--text-color);
+  opacity: 0.8;
+  line-height: 1.5;
+}
+
+.home-get-started-button {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background-color: var(--primary-color);
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.home-get-started-button:hover {
+  background-color: #2980b9;
+}
+
+@media (max-width: 768px) {
+  .home-hero-content {
+    padding: 2rem;
+    margin: 1rem;
+  }
+
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-description {
+    font-size: 1.1rem;
+  }
+
+  .home-feature-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .home-feature-card {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-hero-content {
+    padding: 1.5rem;
+  }
+
+  .home-title {
+    font-size: 1.8rem;
+  }
+
+  .home-description {
+    font-size: 1rem;
+  }
+}
