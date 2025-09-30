@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database');
 
-// Get favorites
 router.get('/', (req, res) => {
   const query = `
     SELECT c.* 
@@ -20,7 +19,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Add to favorites
 router.post('/', (req, res) => {
   const { college_id } = req.body;
 
@@ -28,7 +26,6 @@ router.post('/', (req, res) => {
     return res.status(400).json({ error: 'College ID is required' });
   }
 
-  // Check if college exists
   db.get("SELECT id FROM colleges WHERE id = ?", [college_id], (err, college) => {
     if (err) {
       console.error('Database error:', err.message);
@@ -39,7 +36,6 @@ router.post('/', (req, res) => {
       return res.status(404).json({ error: 'College not found' });
     }
 
-    // Check if already in favorites
     db.get("SELECT id FROM favorites WHERE college_id = ?", [college_id], (err, existing) => {
       if (err) {
         console.error('Database error:', err.message);
@@ -61,7 +57,6 @@ router.post('/', (req, res) => {
   });
 });
 
-// Remove from favorites
 router.delete('/:college_id', (req, res) => {
   const college_id = req.params.college_id;
 
