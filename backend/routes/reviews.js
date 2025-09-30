@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database');
 
-// Get all reviews
 router.get('/', (req, res) => {
   db.all("SELECT * FROM reviews ORDER BY created_at DESC", (err, rows) => {
     if (err) {
@@ -13,7 +12,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Add a review
 router.post('/', (req, res) => {
   const { college_name, rating, comment } = req.body;
 
@@ -41,7 +39,6 @@ router.post('/', (req, res) => {
   });
 });
 
-// Delete a review
 router.delete('/:id', (req, res) => {
   const reviewId = req.params.id;
 
@@ -60,7 +57,6 @@ router.delete('/:id', (req, res) => {
       return res.status(404).json({ error: 'Review not found' });
     }
 
-    // Delete the review
     db.run("DELETE FROM reviews WHERE id = ?", [reviewId], function (err) {
       if (err) {
         console.error('Database error:', err.message);
@@ -77,7 +73,6 @@ router.delete('/:id', (req, res) => {
   });
 });
 
-// Get review by ID (optional - for verification)
 router.get('/:id', (req, res) => {
   const reviewId = req.params.id;
 
