@@ -12,7 +12,6 @@ const db = new sqlite3.Database(DATASOURCE, (err) => {
 
 function initializeDatabase() {
   db.serialize(() => {
-    // Colleges table
     db.run(`CREATE TABLE IF NOT EXISTS colleges (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       name TEXT NOT NULL,
