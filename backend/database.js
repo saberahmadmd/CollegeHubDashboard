@@ -11,7 +11,6 @@ const db = new sqlite3.Database(DATASOURCE, (err) => {
 });
 
 function initializeDatabase() {
-  // Create tables in sequence
   db.serialize(() => {
     // Colleges table
     db.run(`CREATE TABLE IF NOT EXISTS colleges (
@@ -22,7 +21,6 @@ function initializeDatabase() {
       fee INTEGER NOT NULL
     )`);
 
-    // Reviews table
     db.run(`CREATE TABLE IF NOT EXISTS reviews (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       college_name TEXT NOT NULL,
@@ -31,7 +29,6 @@ function initializeDatabase() {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     )`);
 
-    // Favorites table
     db.run(`CREATE TABLE IF NOT EXISTS favorites (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       college_id INTEGER NOT NULL
@@ -67,8 +64,6 @@ function seedData() {
 
       stmt.finalize(() => {
         console.log('Seed data inserted successfully');
-
-        // Add sample reviews
         const sampleReviews = [
           { college_name: 'ABC Engineering College', rating: 5, comment: 'Excellent faculty and infrastructure!' },
           { college_name: 'XYZ Institute of Technology', rating: 4, comment: 'Good placements and campus life.' },
