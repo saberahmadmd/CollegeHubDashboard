@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database');
 
-// Get all colleges with filters
 router.get('/', (req, res) => {
   const { location, course, minFee, maxFee, search, sort } = req.query;
 
@@ -51,7 +50,6 @@ router.get('/', (req, res) => {
   });
 });
 
-// Get filter options
 router.get('/filters', (req, res) => {
   db.all("SELECT DISTINCT location FROM colleges ORDER BY location", (err, locationRows) => {
     if (err) {
